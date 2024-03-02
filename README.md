@@ -1,3 +1,13 @@
+---
+title: Gradio With Fastapi
+emoji: 🌖
+colorFrom: yellow
+colorTo: purple
+sdk: docker
+pinned: false
+license: mit
+---
+
 # Gradio plus FastAPI with UUID logging sessions
 ## Run the app in a virtual environment
 
