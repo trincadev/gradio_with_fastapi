@@ -1,19 +1,23 @@
 from fastapi import FastAPI
 import gradio as gr
 
-CUSTOM_PATH = "/"
-
-app = FastAPI()
+from app_gradio_fastapi import routes
 
 
 def request_formatter(text: str) -> str:
     return f"transformed {text}."
 
 
-@app.get("/health")
-def read_main():
-    return {"message": "ok"}
-
-
-io = gr.Interface(request_formatter, "textbox", "textbox")
-app = gr.mount_gradio_app(app, io, path=CUSTOM_PATH)
+CUSTOM_GRADIO_PATH = "/"
+app = FastAPI(title="logging_app", version="1.0")
+app.include_router(routes.router)
+io = gr.Interface(
+    request_formatter,
+    inputs=[
+        gr.Textbox(lines=1, placeholder=None, label="Text input"),
+    ],
+    outputs=[
+        gr.Textbox(lines=1, placeholder=None, label="Text Output"),
+    ],
+)
+app = gr.mount_gradio_app(app, io, path=CUSTOM_GRADIO_PATH)
