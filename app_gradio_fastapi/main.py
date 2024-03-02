@@ -1,11 +1,8 @@
-from fastapi import FastAPI
 import gradio as gr
+from fastapi import FastAPI
 
 from app_gradio_fastapi import routes
-
-
-def request_formatter(text: str) -> str:
-    return f"transformed {text}."
+from app_gradio_fastapi.helpers.formatters import request_formatter
 
 
 CUSTOM_GRADIO_PATH = "/"
