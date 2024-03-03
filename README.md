@@ -22,7 +22,10 @@ source venv/bin/activate
 # install the project dependencies
 python -m pip install pip --upgrade
 python -m pip install -r requirements.txt
-# execute the uvicorn webserver
+# execute the uvicorn webserver. In case of problem try WITHOUT the absolute path or uvicorn could not find the module
+# check that env $PATH contains the current virtualenv `venv/bin` folder
+# also try using a relative path, e.g. `./venv/bin/uvicorn` or reinstalling the virtualenv
+# fastapi==0.110.0, uvicorn==0.27.1
 uvicorn app_gradio_fastapi.main:app --host 0.0.0.0 --port 7860 --reload
 ```
 
